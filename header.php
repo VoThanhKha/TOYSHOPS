@@ -20,10 +20,10 @@
 
   <style>
         body {
-            color:blue;
+            color:orangered;
         }
         h1 {
-            color:royalblue;
+            color:coral;
         }
         p {
             color: rgb(0,0,255)
@@ -59,16 +59,90 @@
             <li class="nav-item">
             <a class="nav-link" href="#">About us</a>
             </li>
-            <li class="nav-item">
+
+
+           <li class="nav-item">
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
                     <button class="btn btn-outline-success" type="submit">Search</button>
+
+                    <?php
+                $conn = mysqli_connect("localhost", "root", "", "shop_200092");
+                if(isset($_GET["Search"]) && !empty($_GET["Search"])){
+                    $key = $_GET["Search"];
+                    $sql = "SELECT * FROM product`(`Product_ID`, `Product_Name`, `Price`, `DetailDesc`, `Pro_qty`,`Pro_image`,`Cat_ID`)";
+                }
+                else
+                {
+                    $sql = "SELECT * FROM product";
+                }
+                $result = mysqli_query($conn, $sql);
+            ?>
+            <tr>
+            <td>
+            
+            </form>
+            </td>
+            </tr>
+            <?php
+            while ($row = mysqli_fetch_assoc($result))
+            {
+            $proname = $row['Product_Name'];
+            $price      = $row['Price'];
+            $description      = $row['DetailDesc'];
+            $quantity      = $row['Pro_qty'];
+            // $proimage      = $row['Image'];
+            $procate      = $row['Cat_ID'];
+            ?>
+            <tr>
+ <?php
+                $conn = mysqli_connect("localhost", "root", "", "shop_200092");
+                if(isset($_GET["Search"]) && !empty($_GET["Search"])){
+                    $key = $_GET["Search"];
+                    $sql = "SELECT * FROM product`(`Product_ID`, `Product_Name`, `Price`, `DetailDesc`, `Pro_qty`,`Pro_image`,`Cat_ID`)";
+                }
+                else
+                {
+                    $sql = "SELECT * FROM product";
+                }
+                $result = mysqli_query($conn, $sql);
+            ?>
+            <tr>
+            <td>
+            
+            </form>
+            </td>
+            </tr>
+            <?php
+            while ($row = mysqli_fetch_assoc($result))
+            {
+                
+            $proname = $row['Product_Name'];
+            $price      = $row['Price'];
+            $description      = $row['DetailDesc'];
+            $quantity      = $row['Pro_qty'];
+
+            ?>
+            <tr>
+         
+            </tr>
+            <?php
+            }
+            ?>
+            <?php
+            mysqli_close($conn);?>
+            
+            </tr>
+            <?php
+            }
+            ?>
+        
                 </form>
             </li>
         </ul>
         
         <div class="navbar-nav ms-auto">
-                    <a href="login.php" class="nav-item nav-link">Login</a>
+                    <a href="login.php" class="nav-item nav-link" >Login</a>
                     <a href="register.php" class="nav-item nav-link">Register</a>
         </div>
         </div>

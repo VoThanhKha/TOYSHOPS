@@ -41,7 +41,7 @@
 
         copy($proimage['tmp_name'], "../img/" . $proimage['name']);
         $filePic = $proimage['name'];
-        $result = mysqli_query($conn, "INSERT INTO `product`(`Product_ID`, `Product_Name`, `Price`, `DetailDesc`, `Pro_qty`,`Pro_image`,`Cat_ID`) 
+        $result = pg_connect($conn, "INSERT INTO `product`(`Product_ID`, `Product_Name`, `Price`, `DetailDesc`, `Pro_qty`,`Pro_image`,`Cat_ID`) 
         VALUES ('{$proid}','{$proname}', {$price},'{$description}', {$quantity},'{$filePic}','{$procate}')");
 
         if ($result) {
