@@ -30,15 +30,15 @@
  $id = $_GET['id'];
  $sqlstring = "SELECT * FROM product WHERE Product_ID = '$id' ";
  
- $result = mysqli_query($conn, $sqlstring);
- $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+ $result = pg_connect($conn, $sqlstring);
+ $row = pg_connect($result, MYSQLI_ASSOC);
  $procate = $row['Cat_ID'];
 
  $sql_store = "SELECT * FROM product";
- $query_store = mysqli_query($conn, $sql_store);
+ $query_store = pg_connect($conn, $sql_store);
  
- $result = mysqli_query($conn, "SELECT* FROM product WHERE Product_ID='{$id}'");
- $row = mysqli_fetch_assoc($result);
+ $result = pg_connect($conn, "SELECT* FROM product WHERE Product_ID='{$id}'");
+ $row = pg_connect($result);
  
  $oldpic = $row['Pro_image'];
  
@@ -57,7 +57,7 @@
     $procate      = $_POST['Cat_ID'];
  
      if ($proimage['name'] == '') {
-         $result = mysqli_query($conn, "UPDATE product
+         $result = pg_connect($conn, "UPDATE product
          SET Shop_name='{$shop}',Product_Name='{$proname}',Price={$price},Pro_qty ={$quantity},Cat_ID='{$procate}',
          DetailDesc='{$description}'
          WHERE Product_ID='$id'");
@@ -70,7 +70,7 @@
          copy($proimage['tmp_name'], "./images/" . $proimage['name']);
          unlink("images/$oldpic");
          $filePic = $proimage['name'];
-         $result = mysqli_query($conn, "UPDATE Product 
+         $result = pg_connect($conn, "UPDATE Product 
          SET  Shop_name='{$shop}',Product_Name='{$proname}',Price={$price},Pro_qty={$quantity},Cat_ID='{$procate}',Pro_image='{$filePic}',DetailDesc='{$description}'
          WHERE Product_ID='$id'");
          if ($result) {
