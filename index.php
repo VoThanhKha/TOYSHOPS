@@ -2,7 +2,18 @@
 include_once("header.php");
 ?>
 <div class="container mt-3">
-  <h2>All Products</h2>
+<style>
+        body {
+            color:orangered;
+        }
+        h2 {
+            color:deeppink;
+        }
+        p {
+            color: rgb(0,0,255)
+        }
+</style>
+  <h2>OUR PRODUCTS</h2>
   <div class="row">
     <?php
     include_once("connect.php");
@@ -28,8 +39,6 @@ include_once("header.php");
       <?php
     }
       ?>
-  </div>
-</div>
 
 </body>
 <script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

@@ -49,7 +49,7 @@
                     <li class="sidebar-item active">
                         <a href="../order/" class='sidebar-link'>
                             
-                            <span>Order</span>
+                            <span>Store Sranches</span>
                         </a>
                     </li>
 

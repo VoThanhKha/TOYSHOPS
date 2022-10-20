@@ -32,6 +32,7 @@
         include_once('../connect.php');
     
         $proid   = $_POST['product_id'];
+        $shop = $_POST['Shop_name'];
         $proname = $_POST['Product_Name'];
         $price      = $_POST['Price'];
         $description      = $_POST['DetailDesc'];
@@ -41,8 +42,8 @@
 
         copy($proimage['tmp_name'], "../img/" . $proimage['name']);
         $filePic = $proimage['name'];
-        $result = pg_connect($conn, "INSERT INTO `product`(`Product_ID`, `Product_Name`, `Price`, `DetailDesc`, `Pro_qty`,`Pro_image`,`Cat_ID`) 
-        VALUES ('{$proid}','{$proname}', {$price},'{$description}', {$quantity},'{$filePic}','{$procate}')");
+        $result = mysqli_query($conn, "INSERT INTO `product`(`Product_ID`,`Shop_name`, `Product_Name`, `Price`, `DetailDesc`, `Pro_qty`,`Pro_image`,`Cat_ID`) 
+        VALUES ('{$proid}', '{$shop}','{$proname}', {$price},'{$description}', {$quantity},'{$filePic}','{$procate}')");
 
         if ($result) {
             echo "Product insert Succfully";
@@ -111,6 +112,14 @@
                                             <label for="first-name-vertical">Product ID</label>
                                             <input type="text" id="pid" class="form-control"
                                                 name="product_id" placeholder="Product ID"
+                                                value ="">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="first-name-vertical">Store name</label>
+                                            <input type="text" id="shopnameid" class="form-control"
+                                                name="Shop_name" placeholder="Shop Name"
                                                 value ="">
                                         </div>
                                     </div>

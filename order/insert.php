@@ -80,12 +80,12 @@
         include_once("../connect.php");
         if(isset($_POST['Insert'])){
             $id = mysqli_real_escape_string($conn,$_POST['oid']);
-            $orderDate = mysqli_real_escape_string($conn,$_POST['OrderDate']);
+            $shop = mysqli_real_escape_string($conn,$_POST['Shop_name']);
             $address = mysqli_real_escape_string($conn,$_POST['Address']);
             $username = "Finn";
 
         
-        $insertQ = "INSERT INTO `orders`(`OrderID`, `OrderDate`,`Address`,`username`) VALUES ('$id','$orderDate','$address','$username')";
+        $insertQ = "INSERT INTO `orders`(`OrderID`, `Shop_name`,`Address`,`Contact`) VALUES ('$id','$shop','$address','$username')";
        
         if(mysqli_query($conn,$insertQ))
         {
@@ -115,10 +115,10 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="first-name-vertical">Order Date</label>
-                                            <input id="OrderDate" class="form-control" type="date" name="OrderDate" 
-                                            value ="" />
-                                            
+                                            <label for="first-name-vertical">Store Name</label>
+                                            <input type="text" id="shopnameid" class="form-control"
+                                                name="Shop_name" placeholder="Shop Name"
+                                                value ="">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -131,7 +131,7 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="contact-info-vertical">Username</label>
+                                            <label for="contact-info-vertical">Contact</label>
                                             <input type="text" id="username" class="form-control"
                                                 name="username" placeholder="Current user" value ="" list="user">
                                              <datalist id="user">

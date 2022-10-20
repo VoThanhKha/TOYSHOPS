@@ -48,6 +48,7 @@
  
  
     $proid   = $_POST['product_id'];
+    $shop = $_POST['Shop_name'];
     $proname = $_POST['Product_Name'];
     $price      = $_POST['Price'];
     $description      = $_POST['DetailDesc'];
@@ -57,7 +58,7 @@
  
      if ($proimage['name'] == '') {
          $result = mysqli_query($conn, "UPDATE product
-         SET Product_Name	='{$proname}',Price={$price},Pro_qty ={$quantity},Cat_ID='{$procate}',
+         SET Shop_name='{$shop}',Product_Name='{$proname}',Price={$price},Pro_qty ={$quantity},Cat_ID='{$procate}',
          DetailDesc='{$description}'
          WHERE Product_ID='$id'");
          if ($result) {
@@ -70,7 +71,7 @@
          unlink("images/$oldpic");
          $filePic = $proimage['name'];
          $result = mysqli_query($conn, "UPDATE Product 
-         SET Product_Name='{$proname}',Price={$price},Pro_qty={$quantity},Cat_ID='{$procate}',Pro_image='{$filePic}',DetailDesc='{$description}'
+         SET  Shop_name='{$shop}',Product_Name='{$proname}',Price={$price},Pro_qty={$quantity},Cat_ID='{$procate}',Pro_image='{$filePic}',DetailDesc='{$description}'
          WHERE Product_ID='$id'");
          if ($result) {
              echo "Quá trình cập nhật thành công.";
@@ -141,6 +142,14 @@
                                             <input type="text" id="pid" class="form-control"
                                                 name="product_id" placeholder="Product ID"
                                                 value ="<?php echo $row['Product_ID'] ?>" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="first-name-vertical">Shop Name</label>
+                                            <input type="text" id="shopnameid" class="form-control"
+                                                name="Shop_name" placeholder="Shop Name"
+                                                value ="">
                                         </div>
                                     </div>
                                     <div class="col-12">

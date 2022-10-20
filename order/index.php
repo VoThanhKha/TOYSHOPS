@@ -57,7 +57,7 @@
                     <li class="sidebar-item active ">
                         <a href="../order/" class='sidebar-link'>
                             
-                            <span>Order</span>
+                            <span>Store branches</span>
                         </a>
                     </li>
 
@@ -94,12 +94,12 @@
                         <thead>
                             <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">OrderDate</th>
+                            <th scope="col">Store name</th>
                           
                             <th scope="col">Address</th>
                            
                           
-                            <th scope="col" colspan="2">Action</th>
+                            <th scope="col" colspan="2">Contact</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -108,7 +108,7 @@
                             ?>
                             <tr>
                                 <td><?=$row['OrderID']?></td>
-                                <td><?=$row['OrderDate']?></td>
+                                <td><?=$row['Shop_name']?></td>
                                 
                                 <td><?=$row['Address']?></td>
                                

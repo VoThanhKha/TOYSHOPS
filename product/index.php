@@ -55,7 +55,7 @@
                     <li class="sidebar-item  ">
                         <a href="../order/" class='sidebar-link'>
                             
-                            <span>Order</span>
+                            <span>Store Branches</span>
                         </a>
                     </li>
 
@@ -85,6 +85,7 @@
                         <thead>
                             <tr>
                             <th scope="col">ID</th>
+                            <th scope="col">Store name</th>
                             <th scope="col">Name</th>
                             <th scope="col">Price</th>
                             <th scope="col">Descript</th>
@@ -100,10 +101,12 @@
                             ?>
                             <tr>
                                 <td><?=$row['Product_ID']?></td>
+                                <td><?=$row['Shop_name']?></td>
                                 <td><?=$row['Product_Name']?></td>
                                 <td><?=$row['Price']?></td>
                                 <td><?=$row['DetailDesc']?></td>
                                 <td><?=$row['Pro_qty']?></td>
+                              
                                 <td>
                                     <a href="update.php?id=<?=$row['Product_ID']?>" class="btn btn-warning rounded-pill"> Update </a>
                                 </td>
