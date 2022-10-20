@@ -28,7 +28,7 @@
     <?php
             include_once("../connect.php");
             $sql1 = "select * from product";
-            $re1 = pg_connect($conn,$sql1);
+            $re1 = mysqli_query($conn,$sql1);
             ?>
         <div class="sidebar-wrapper active">
             <div class="sidebar-header">
@@ -97,7 +97,7 @@
 
                         
                             <?php
-                            while( $row = pg_connect($re1) ){
+                            while( $row = mysqli_fetch_assoc($re1) ){
                             ?>
                             <tr>
                                 <td><?=$row['Product_ID']?></td>

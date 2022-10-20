@@ -4,7 +4,7 @@ include_once("../connect.php");
 if(isset($_GET['id'])){
     $delQuery = "Delete from product where Product_ID='".$_GET['id']."'";
 
-if(pg_connect($conn, $delQuery)){
+if(mysqli_query($conn, $delQuery)){
     echo " <script>
     window.location = 'index.php?status=delete'; </script>";
 }else{
