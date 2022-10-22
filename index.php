@@ -18,8 +18,8 @@ include_once("header.php");
     <?php
     include_once("connect.php");
     $sql = "select * from Product";
-    $re = mysqli_query($conn, $sql);
-    while($row = mysqli_fetch_assoc($re)) {
+    $re = pg_connect($conn, $sql);
+    while($row = pg_fetch_row($re)) {
     ?>
       <div class="col-md-4">
             <div class="card">
