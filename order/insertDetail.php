@@ -79,37 +79,37 @@
             $OrderDetail_ID = $_GET['odid'];
 
             $listDetail = "select * from orders_detail where Order_ID='".$_GET['id']."' and OrderDetail_ID = '".$_GET['odid']."'";
-            $res1 = mysqli_query ($conn,$listDetail);
-            $lD = mysqli_fetch_row($res1);
+            $res1 = pg_connect ($conn,$listDetail);
+            $lD = pg_fetch_row($res1);
 
         }
         if(isset($_POST['Insert'])){
         
-        $OrderDetail_ID = mysqli_real_escape_string($conn,$_POST['OrderDetail_ID']);
-        $Product_ID = mysqli_real_escape_string($conn,$_POST['Product_ID']);
-        $Pro_Qty = mysqli_real_escape_string($conn,$_POST['Pro_Qty']);
+        $OrderDetail_ID = pg_query($conn,$_POST['OrderDetail_ID']);
+        $Product_ID = pg_query($conn,$_POST['Product_ID']);
+        $Pro_Qty = pg_query($conn,$_POST['Pro_Qty']);
         
-        $data = mysqli_query($conn,"select Price from product where Product_ID='$Product_ID'");
-        $rData = mysqli_fetch_assoc($data);
+        $data = pg_connect($conn,"select Price from product where Product_ID='$Product_ID'");
+        $rData = pg_fetch_row($data);
         $Price = $rData['Price'];
         $total = $Price * $Pro_Qty;
-        $checkEx = mysqli_query($conn,"SELECT Product_ID FROM orders_detail WHERE `Order_ID`='$id' and `Product_ID` = '$Product_ID'");
-        if(mysqli_num_rows($checkEx) == 0) {
+        $checkEx = pg_connect($conn,"SELECT Product_ID FROM orders_detail WHERE `Order_ID`='$id' and `Product_ID` = '$Product_ID'");
+        if(pg_num_rows($checkEx) == 0) {
             $insertQuery = "INSERT INTO `orders_detail`(`OrderDetail_ID`, `Order_ID`, `Product_ID`, `Pro_Qty`, `Price`, `Total`) VALUES ('$OrderDetail_ID','$id','$Product_ID',$Pro_Qty,$Price,$total)";
         }
         else{
             $insertQuery = "UPDATE orders_detail SET Pro_Qty= Pro_Qty + $Pro_Qty, Total = Total + $total WHERE `Order_ID`='$id' and `Product_ID` = '$Product_ID'";
         }
         
-        if (mysqli_query($conn, $insertQuery)) {
+        if (pg_connect($conn, $insertQuery)) {
            
         } else {
-          echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+          echo "Error: " . $sql . "<br>" . pg_connect($conn);
         }
        
     }
-        $sumTotalQuery  = mysqli_query($conn,"SELECT sum(total) FROM `orders_detail` WHERE Order_ID='$id'");
-        $sumTotal = mysqli_fetch_row($sumTotalQuery);
+        $sumTotalQuery  = pg_connect($conn,"SELECT sum(total) FROM `orders_detail` WHERE Order_ID='$id'");
+        $sumTotal = pg_fetch_row($sumTotalQuery);
     
     ?>
 <!-- div content -->
@@ -160,8 +160,8 @@
                                             <datalist id="p">
                                                 <?php
                                                 $selectProduct = "select * from product";
-                                                $rePro = mysqli_query($conn,$selectProduct);
-                                                while($rowP = mysqli_fetch_assoc($rePro)){
+                                                $rePro = pg_connect($conn,$selectProduct);
+                                                while($rowP = pg_fetch_assoc($rePro)){
                                                 ?>
                                                 <option value="<?=$rowP['Product_ID']?>"><?=$rowP['Product_Name']?></option>
                                                 <?php
@@ -196,7 +196,7 @@
 <?php
 
     $listProduct = "select * from orders_detail where Order_ID='".$_GET['id']."'";
-    $r = mysqli_query ($conn,$listProduct);
+    $r = pg_connect ($conn,$listProduct);
    
 ?>
             <div class="container mb-3">
@@ -219,7 +219,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while( $resLP = mysqli_fetch_assoc($r) ){?>
+                            <?php while( $resLP = pg_fetch_assoc($r) ){?>
                             <tr>
                                 <td><?=$resLP['Order_ID']?></td>
                                 <td><?=$resLP['OrderDetail_ID']?></td>

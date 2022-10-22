@@ -79,20 +79,20 @@
         <?php
         include_once("../connect.php");
         if(isset($_POST['Insert'])){
-            $id = mysqli_real_escape_string($conn,$_POST['oid']);
-            $shop = mysqli_real_escape_string($conn,$_POST['Shop_name']);
-            $address = mysqli_real_escape_string($conn,$_POST['Address']);
+            $id = pg_query($conn,$_POST['oid']);
+            $shop = pg_query($conn,$_POST['Shop_name']);
+            $address = pg_query($conn,$_POST['Address']);
             $username = "Finn";
 
         
         $insertQ = "INSERT INTO `orders`(`OrderID`, `Shop_name`,`Address`,`Contact`) VALUES ('$id','$shop','$address','$username')";
        
-        if(mysqli_query($conn,$insertQ))
+        if(pg_connect($conn,$insertQ))
         {
             echo "<script> window.location = 'index.php?status=insert' </script>";
 
         }else{
-            echo "error: ".$insertQ. "<br> ". mysqli_error($conn);
+            echo "error: ".$insertQ. "<br> ". pg_connect($conn);
 
         }
     }
@@ -137,8 +137,8 @@
                                              <datalist id="user">
                                             <?php
                                                $uSql = "select * from customer";
-                                               $re2 = mysqli_query($conn,$uSql);
-                                               while($rowU = mysqli_fetch_assoc($re2))
+                                               $re2 = pg_connect($conn,$uSql);
+                                               while($rowU = pg_fetch_row($re2))
                                                {
                                                    ?>
                                                    <option value ="<?=$rowU['Username']?>">

@@ -29,7 +29,7 @@
             <?php
             include_once("../connect.php");
             $sql1 = "select * from orders";
-            $re1 = mysqli_query($conn,$sql1);
+            $re1 = pg_connect($conn,$sql1);
             ?>
             
         <div class="sidebar-wrapper active">
@@ -104,7 +104,7 @@
                         </thead>
                         <tbody>
                             <?php
-                            while( $row = mysqli_fetch_assoc($re1) ){
+                            while( $row = pg_fetch_row($re1) ){
                             ?>
                             <tr>
                                 <td><?=$row['OrderID']?></td>

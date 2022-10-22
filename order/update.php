@@ -71,25 +71,25 @@
  if (isset($_GET['id'])){
      $oid = $_GET['id'];
      $sql = "select * from orders where OrderID = '$oid'";
-     $re = mysqli_query($conn,$sql);
-     $row = mysqli_fetch_assoc($re);
+     $re = pg_connect($conn,$sql);
+     $row = pg_fetch_assoc($re);
  }
  if(isset($_POST['Update'])){
      $oid = $_GET['id'];
-     $OrderDate = mysqli_real_escape_string($conn,$_POST['OrderDate']);
-     $Address= mysqli_real_escape_string($conn,$_POST['Address']);
-     $Payment = mysqli_real_escape_string($conn,$_POST['Payment']);
-     $status = mysqli_real_escape_string($conn,$_POST['status']);
-     $username = mysqli_real_escape_string($conn,$_POST['username']);
+     $OrderDate = pg_query($conn,$_POST['OrderDate']);
+     $Address= pg_query($conn,$_POST['Address']);
+     $Payment = pg_query($conn,$_POST['Payment']);
+     $status = pg_query($conn,$_POST['status']);
+     $username = pg_query($conn,$_POST['username']);
      $uSQL = "UPDATE `orders` SET `OrderDate`='$OrderDate',`Address`='$Address', `Payment`=$Payment, `status`='$status',
      `username`='$username' WHERE `OrderID`='$oid'";
 
-     if(mysqli_query($conn,$uSQL))
+     if(pg_query($conn,$uSQL))
      {
          echo "<script> window.location = 'index.php?status=insert' </script>";
 
      }else{
-         echo "error: ".$uSQL. "<br> ". mysqli_error($conn);
+         echo "error: ".$uSQL. "<br> ". pg_connect($conn);
 
      }
 
