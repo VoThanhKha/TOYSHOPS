@@ -16,8 +16,8 @@ if (isset($_POST['signup'])) {
     $err="";
     $username   = $_POST['txtUsername'];
     
-    $query = mysqli_query($conn,"SELECT username FROM customer WHERE username='{$username}'");
-    if (mysqli_num_rows($query) == 1){
+    $query = pg_query($conn,"SELECT username FROM customer WHERE username='{$username}'");
+    if (pg_num_rows($query) == 1){
       echo "<script>alert('Username already exists!')</script>";
       echo '<meta http-equiv="refresh" content="0;URL=?page=signup"/>';
     }
@@ -28,7 +28,7 @@ if (isset($_POST['signup'])) {
     if($err!=""){
         echo $err;
     }else{
-        $result = mysqli_query($conn, "INSERT INTO customer(Username,Password,Fullname,Gender,Address,Email) VALUES ('{$username}','{$password}','{$fullname}','{$gender}','{$address}','{$email}')");
+        $result = pg_query($conn, "INSERT INTO customer(Username,Password,Fullname,Gender,Address,Email) VALUES ('{$username}','{$password}','{$fullname}','{$gender}','{$address}','{$email}')");
 
         if ($result) {
             echo "Quá trình đăng ký thành công.";
