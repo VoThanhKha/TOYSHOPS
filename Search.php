@@ -1,45 +1,41 @@
-</div>
-                <div class="page-content">
-                    <div class="table-responsive">
-                    <!-- Table -->
-                        <table class="table table-bordered mb-0">
-                            <thead>
-                                <tr>
-                                    <th>NAME</th>
-                                    <th>RATE</th>
-                                    <th>SKILL</th>
-                                    <th>TYPE</th>
-                                    <th>LOCATION</th>
-                                    <th>ACTION</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-bold-500">Michael Right</td>
-                                    <td>$15/hr</td>
-                                    <td class="text-bold-500">UI/UX</td>
-                                    <td>Remote</td>
-                                    <td>Austin,Taxes</td>
-                                    <td><a href="#" class="btn btn-warning rounded-pill">Update</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-bold-500">Morgan Vanblum</td>
-                                    <td>$13/hr</td>
-                                    <td class="text-bold-500">Graphic concepts</td>
-                                    <td>Remote</td>
-                                    <td>Shangai,China</td>
-                                    <td><a href="#" class="btn btn-warning rounded-pill">Update</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-bold-500">Tiffani Blogz</td>
-                                    <td>$15/hr</td>
-                                    <td class="text-bold-500">Animation</td>
-                                    <td>Remote</td>
-                                    <td>Austin,Texas</td>
-                                    <td><a href="#" class="btn btn-warning rounded-pill">Update</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+<?php
+include_once("header.php");
+include_once("connect.php");
+
+if(isset($_POST['Search'])){
+  $keyword =$_POST['Search'];
+  $sql ="SELECT Product_ID, Shop_name, Product_Name, Price, DetailDesc, ProDate, Pro_qty, Pro_image, Cat_ID FROM product WHERE 1";
+  $re =mysqli_query($conn,$sql);
+}
+?>
+<div class="container mt-3">
+  <h2>SEARCH: <?=$keyword?></h2>
+  <div class="row">
+    <?php
+    while( $row = mysqli_fetch_array($re)){
+    ?>
+      <div class="col-md-4">
+            <div class="card">
+                <img
+                src="img/<?=$row['Pro_image']?>"
+                class="card-img-top"
+                alt="<?=$row['Product_Name']?>" style="margin: auto; width: 300px;"
+                />
+                <div class="card-body">
+                <a href="detail.php?id=<?=$row['Product_Name']?>" class="text-decoration-none"><h5 class="card-title"><?=$row['Product_Name']?></h5></a>
+                <h6 class="card-subtitle mb-2 text-muted"><?=$row['Price']?>   </h6>
+                <a href="cart.php?id=<?=$row['Product_ID']?>" class="btn btn-primary">    </a>
                 </div>
-    </div>
+            </div>
+      </div>
+      <?php
+    }
+      ?>
+  </div>
+</div>
+
+</body>
+<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+</html>

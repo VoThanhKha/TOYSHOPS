@@ -62,7 +62,7 @@
                     <li class="sidebar-item  ">
                         <a href="../account/" class='sidebar-link'>
                             
-                            <span>Account</span>
+                            <span>Search Products</span>
                         </a>
                     </li>
 
@@ -105,6 +105,7 @@
                                 <td><?=$row['Product_Name']?></td>
                                 <td><?=$row['Price']?></td>
                                 <td><?=$row['DetailDesc']?></td>
+                            
                                 <td><?=$row['Pro_qty']?></td>
                               
                                 <td>
