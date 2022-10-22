@@ -6,8 +6,8 @@ if(isset($_POST['btnsignin'])){
     $uname = $_POST['txtUserName'];
     $pwd = md5($_POST['txtPassword']);
     $sql = "SELECT * FROM customer WHERE UserName = '$uname' and Password = '$pwd' ";
-    $re = mysqli_query($conn,$sql);
-    if(mysqli_num_rows($re) > 0 ){
+    $re = pg_connect($conn,$sql);
+    if(pg_fetch_row($re) > 0 ){
         $_SESSION['txtUserName']= $uname;
         $_SESSION['txtPassword']= $pwd;
         $_SESSION['timeout']=time();
