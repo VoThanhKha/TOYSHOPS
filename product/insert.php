@@ -42,8 +42,9 @@
 
         copy($proimage['tmp_name'], "../img/" . $proimage['name']);
         $filePic = $proimage['name'];
-        $result = pg_query_params($conn, "INSERT INTO `product`(`Product_ID`,`Shop_name`, `Product_Name`, `Price`, `DetailDesc`, `Pro_qty`,`Pro_image`,`Cat_ID`) 
+        $result = pg_query_params($conn, "INSERT INTO `product` (`product_id`, `shop_name`, `proname`, `price` , `descript`,`quantity`, `image`, `Cat_ID`)) 
         VALUES ('{$proid}', '{$shop}','{$proname}', {$price},'{$description}', {$quantity},'{$filePic}','{$procate}')");
+
 
         if ($result) {
             echo "Product insert Succfully";
