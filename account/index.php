@@ -69,7 +69,7 @@
     <tbody>
     <?php
     /*Kết nối máy chủ MySQL. Máy chủ có cài đặt mặc định (user là 'root' và không có mật khẩu)*/
-    $link = pg_connect("localhost", "root", "", "shop_200092");
+    $link = mysqli_connect("localhost", "root", "", "shop_200092");
  
     // Kểm tra kết nối
     if ($link === false) {
@@ -82,9 +82,9 @@
     }
     // Thực hiện câu lệnh SELECT
     $sql = "SELECT * FROM product WHERE Product_Name LIKE '$proname'";
-    if ($result = pg_query($link, $sql)) {
-        if (pg_num_rows($result) > 0) {
-            while ($row = pg_fetch_array($result)) {
+    if ($result = mysqli_query($link, $sql)) {
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_array($result)) {
                 ?>
             
                 <tr>
@@ -99,7 +99,7 @@
                 <?php
             }
             // Giải phóng bộ nhớ của biến
-            pg_free_result($result);
+            mysqli_free_result($result);
         } else {
             ?>
             <tr>
@@ -108,10 +108,10 @@
             <?php
         }
     } else {
-        echo "ERROR: Không thể thực thi câu lệnh $sql. " . pg_errormessage($link);
+        echo "ERROR: Không thể thực thi câu lệnh $sql. " . mysqli_error($link);
     }
     // Đóng kết nối
-    pg_close($link);
+    mysqli_close($link);
     ?>
     </tbody>
 </table>

@@ -100,19 +100,19 @@
                             while( $row = pg_fetch_assoc($re1) ){
                             ?>
                             <tr>
-                                <td><?=$row['Product_ID']?></td>
-                                <td><?=$row['Shop_name']?></td>
-                                <td><?=$row['Product_Name']?></td>
-                                <td><?=$row['Price']?></td>
-                                <td><?=$row['DetailDesc']?></td>
-                            
-                                <td><?=$row['Pro_qty']?></td>
+                                <td><?=$row['product_id']?></td>
+                                <td><?=$row['shop_name']?></td>
+                                <td><?=$row['proname']?></td>
+                                <td><?=$row['price']?></td>
+                                <td><?=$row['descript']?></td>
+                                <td><?=$row['quantity']?></td>
+
                               
                                 <td>
-                                    <a href="update.php?id=<?=$row['Product_ID']?>" class="btn btn-warning rounded-pill"> Update </a>
+                                    <a href="update.php?id=<?=$row['product_id']?>" class="btn btn-warning rounded-pill"> Update </a>
                                 </td>
                                 <td>
-                                <a href="delete.php?id=<?=$row['Product_ID']?>" class="btn btn-warning rounded-pill"> Delete </a>
+                                <a href="delete.php?id=<?=$row['product_id']?>" class="btn btn-warning rounded-pill"> Delete </a>
                                 </td>
                                
                             </tr>

@@ -24,25 +24,23 @@
 <body>
 <!-- Sidebar -->
     <div id="sidebar" class="active">
-    <?php
-
-       
+    <?php 
     if (isset($_POST['Insert'])) {
 
         include_once('../connect.php');
     
         $proid   = $_POST['product_id'];
-        $shop = $_POST['Shop_name'];
-        $proname = $_POST['Product_Name'];
-        $price      = $_POST['Price'];
-        $description      = $_POST['DetailDesc'];
-        $quantity      = $_POST['Pro_qty'];
-        $proimage      = $_FILES['Image'];
-        $procate      = $_POST['Cat_ID'];
+        $shop = $_POST['shop_name'];
+        $proname = $_POST['proname'];
+        $price      = $_POST['price'];
+        $description      = $_POST['descript'];
+        $quantity      = $_POST['quantity'];
+        $proimage      = $_FILES['image'];
+        $procate      = $_POST['cat_id'];
 
         copy($proimage['tmp_name'], "../img/" . $proimage['name']);
         $filePic = $proimage['name'];
-        $result = pg_query_params($conn, "INSERT INTO `product` (`product_id`, `shop_name`, `proname`, `price` , `descript`,`quantity`, `image`, `Cat_ID`)) 
+        $result = pg_query_params($conn, "INSERT INTO `product` (`product_id`, `shop_name`, `proname`, `price`, `quantity` , `descript`, `image`, `cat_id`)) 
         VALUES ('{$proid}', '{$shop}','{$proname}', {$price},'{$description}', {$quantity},'{$filePic}','{$procate}')");
 
 
@@ -120,7 +118,7 @@
                                         <div class="form-group">
                                             <label for="first-name-vertical">Store name</label>
                                             <input type="text" id="shopnameid" class="form-control"
-                                                name="Shop_name" placeholder="Shop Name"
+                                                name="shop_name" placeholder="Shop Name"
                                                 value ="">
                                         </div>
                                     </div>
@@ -128,7 +126,7 @@
                                         <div class="form-group">
                                             <label for="first-name-vertical">Product Name</label>
                                             <input type="text" id="pname" class="form-control"
-                                                name="Product_Name" placeholder="Product Name"
+                                                name="proname" placeholder="Product Name"
                                                 value ="">
                                         </div>
                                     </div>
@@ -136,7 +134,7 @@
                                         <div class="form-group">
                                             <label for="contact-info-vertical">Price</label>
                                             <input type="number" id="Price" class="form-control"
-                                                name="Price" placeholder="Price" value ="">
+                                                name="price" placeholder="Price" value ="">
                                         </div>
                                     </div>
                                    
@@ -144,7 +142,7 @@
                                         <div class="form-group">
                                             <label for="first-name-vertical">Product Description</label>
                                             <input type="text" id="DetailDesc" class="form-control"
-                                                name="DetailDesc" placeholder="Product Description"
+                                                name="descript" placeholder="Product Description"
                                                 value ="">
                                         </div>
                                     </div> 
@@ -152,20 +150,20 @@
                                         <div class="form-group">
                                             <label for="contact-info-vertical">Quantity</label>
                                             <input type="number" id="Pro_qty" class="form-control"
-                                                name="Pro_qty" placeholder="Quantity" value ="">
+                                                name="quantity" placeholder="Quantity" value ="">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="image-vertical">Image</label>
-                                            <input type="file" name="Image" id="Pro_image" class="form-control" value="" >
+                                            <input type="file" name="image" id="Pro_image" class="form-control" value="" >
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="password-vertical">Cat id</label>
                                             <input type="text" id="cat_id" class="form-control"
-                                                name="Cat_ID" placeholder="Cat id" value ="">
+                                                name="cat_id" placeholder="Cat id" value ="">
                                         </div>
                                     </div>
                                   
