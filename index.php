@@ -12,7 +12,7 @@ include_once("header.php");
         p {
             color: rgb(0,0,255)
         }
-        h3{
+        img{
           text-align: center;
         }
 </style>
