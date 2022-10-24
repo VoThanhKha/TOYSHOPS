@@ -14,15 +14,19 @@ include_once("header.php");
         }
 </style>
   <h2>OUR PRODUCTS</h2>
+  <html>
+   <head>
+      <title>Thẻ IMG</title>
+   </head>
+   <body> 
+      <img src="flower.jpg" height="150px" width="150px" alt="" />
+      <!-- hoặc -->
+      <img src="flower.jpg" height="50%" width="50%" alt="" />
+   </body>
+</html>
   <div class="row">
     <?php
-       /*Kết nối máy chủ MySQL. Máy chủ có cài đặt mặc định (user là 'root' và không có mật khẩu)*/
-       $conn = pg_pconnect("postgres://evjwdctyczrqow:65c77aa39bff6486959ad4e9532e62b27234a6693e6611c442a980e99d133448@ec2-34-235-198-25.compute-1.amazonaws.com:5432/dfcio4ifhhi5ik");
-    
-       // Kểm tra kết nối
-       // if ($$conn === false) {
-       //     die("ERROR: Không thể kết nối. " . pg_errormessage());
-       // }
+    include_once("connect.php");
     $sql = "select * from product";
     $re = pg_connect($conn, $sql);
     while($row = pg_fetch_row($re)) {
