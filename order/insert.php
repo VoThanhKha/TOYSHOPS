@@ -74,8 +74,8 @@
             </a>
         </header>    
         <div className="page-heading pb-2 mt-4 mb-2 ">
-            <h3>Manager</h3> <a href="index.php"><button type="button" class="btn btn-outline-primary">Back to index</button></a>
-        </div>
+        </div>            <h3>Manager</h3> <a href="index.php"><button type="button" class="btn btn-outline-primary">Back to index</button></a>
+
         <?php
         include_once("../connect.php");
         if(isset($_POST['Insert'])){

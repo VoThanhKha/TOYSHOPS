@@ -138,7 +138,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="first-name-vertical">Product ID</label>
-                                            <input type="text" id="pid" class="form-control"
+                                            <input type="text" id="product_id" class="form-control"
                                                 name="product_id" placeholder="Product ID"
                                                 value ="<?php echo $row['product_id'] ?>" disabled>
                                         </div>
@@ -146,7 +146,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="first-name-vertical">Shop Name</label>
-                                            <input type="text" id="shopnameid" class="form-control"
+                                            <input type="text" id="shop_name" class="form-control"
                                                 name="shop_name" placeholder="Shop Name"
                                                 value ="">
                                         </div>
@@ -154,16 +154,16 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="first-name-vertical">Product Name</label>
-                                            <input type="text" id="pname" class="form-control"
+                                            <input type="text" id="proname" class="form-control"
                                                 name="proname" placeholder="Product Name"
-                                                value ="<?php echo $row['Product_Name'] ?>">
+                                                value ="<?php echo $row['proname'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="contact-info-vertical">Price</label>
-                                            <input type="number" id="Price" class="form-control"
-                                                name="price" placeholder="Price" value ="<?php echo $row['Price'] ?>">
+                                            <input type="number" id="price" class="form-control"
+                                                name="price" placeholder="Price" value ="<?php echo $row['price'] ?>">
                                         </div>
                                     </div>
                 
@@ -171,9 +171,9 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="first-name-vertical">Product Description</label>
-                                            <input type="text" id="DetailDesc" class="form-control"
+                                            <input type="text" id="descript" class="form-control"
                                                 name="descript" placeholder="Product Description"
-                                                value ="<?php echo $row['DetailDesc'] ?>">
+                                                value ="<?php echo $row['descript'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -181,21 +181,21 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="contact-info-vertical">Quantity</label>
-                                            <input type="number" id="Pro_qty" class="form-control"
-                                                name="quantity" placeholder="Quantity" value ="<?php echo $row['Pro_qty'] ?>">
+                                            <input type="number" id="quantity" class="form-control"
+                                                name="quantity" placeholder="Quantity" value ="<?php echo $row['quantity'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="image-vertical">Image</label>
-                                                <input type="file" name="image" id="imgUp" class="form-control" >
+                                                <input type="file" name="image" id="image" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="password-vertical">Cat id</label>
                                             <input type="text" id="cat_id" class="form-control"
-                                                name="cat_id" placeholder="Cat id" value ="<?php echo $row['Cat_ID'] ?>">
+                                                name="cat_id" placeholder="Cat id" value ="<?php echo $row['cat_id'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
