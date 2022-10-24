@@ -69,12 +69,12 @@
     <tbody>
     <?php
     /*Kết nối máy chủ MySQL. Máy chủ có cài đặt mặc định (user là 'root' và không có mật khẩu)*/
-    $link = pg_connect("localhost", "root", "", "shop_200092");
+    $conn = pg_pconnect("postgres://evjwdctyczrqow:65c77aa39bff6486959ad4e9532e62b27234a6693e6611c442a980e99d133448@ec2-34-235-198-25.compute-1.amazonaws.com:5432/dfcio4ifhhi5ik");
  
     // Kểm tra kết nối
-    if ($link === false) {
-        die("ERROR: Không thể kết nối. " . mysqli_connect_error());
-    }
+    // if ($$conn === false) {
+    //     die("ERROR: Không thể kết nối. " . pg_errormessage());
+    // }
  
     $proname = '%';
     if (isset($_POST['proname'])) {
@@ -82,7 +82,7 @@
     }
     // Thực hiện câu lệnh SELECT
     $sql = "SELECT * FROM product WHERE proname LIKE '$proname'";
-    if ($result = pg_query($link, $sql)) {
+    if ($result = pg_query($conn, $sql)) {
         if (pg_num_rows($result) > 0) {
             while ($row = pg_fetch_array($result)) {
                 ?>
@@ -108,10 +108,10 @@
             <?php
         }
     } else {
-        echo "ERROR: Không thể thực thi câu lệnh $sql. " . pg_errormessage($link);
+        echo "ERROR: Không thể thực thi câu lệnh $sql. " . pg_errormessage($conn);
     }
     // Đóng kết nối
-    pg_close($link);
+    pg_close($$conn);
     ?>
     </tbody>
 </table>
