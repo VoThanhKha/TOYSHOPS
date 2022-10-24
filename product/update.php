@@ -28,39 +28,38 @@
     <?php
  include_once("../connect.php");
  $id = $_GET['id'];
- $sqlstring = "SELECT * FROM product WHERE Product_ID = '$id' ";
+ $sqlstring = "SELECT * FROM product WHERE product_id = '$id' ";
  
  $result = pg_connect($conn, $sqlstring);
  $row = pg_fetch_row($result, MYSQLI_ASSOC);
- $procate = $row['Cat_ID'];
+ $procate = $row['cat_id'];
 
  $sql_store = "SELECT * FROM product";
  $query_store = pg_connect($conn, $sql_store);
  
- $result = pg_connect($conn, "SELECT* FROM product WHERE Product_ID='{$id}'");
+ $result = pg_connect($conn, "SELECT* FROM product WHERE product_id='{$id}'");
  $row = pg_fetch_row($result);
  
- $oldpic = $row['Pro_image'];
+ $oldpic = $row['image'];
  
  
  if (isset($_POST['Update'])) {
  
- 
- 
+
     $proid   = $_POST['product_id'];
-    $shop = $_POST['Shop_name'];
-    $proname = $_POST['Product_Name'];
-    $price      = $_POST['Price'];
-    $description      = $_POST['DetailDesc'];
-    $quantity      = $_POST['Pro_qty'];
-    $proimage      = $_FILES['Image'];
-    $procate      = $_POST['Cat_ID'];
+    $shop = $_POST['shop_name'];
+    $proname = $_POST['proname'];
+    $price      = $_POST['price'];
+    $description      = $_POST['descript'];
+    $quantity      = $_POST['quantity'];
+    $proimage      = $_FILES['image'];
+    $procate      = $_POST['cat_id'];
  
      if ($proimage['name'] == '') {
          $result = pg_connect($conn, "UPDATE product
-         SET Shop_name='{$shop}',Product_Name='{$proname}',Price={$price},Pro_qty ={$quantity},Cat_ID='{$procate}',
-         DetailDesc='{$description}'
-         WHERE Product_ID='$id'");
+         SET shop_name='{$shop}',proname='{$proname}',price={$price},quantity ={$quantity},cat_id='{$procate}',
+         descript='{$description}'
+         WHERE product_id ='$id'");
          if ($result) {
              echo "Quá trình cập nhật thành công.";
              echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
@@ -70,9 +69,9 @@
          copy($proimage['tmp_name'], "./images/" . $proimage['name']);
          unlink("images/$oldpic");
          $filePic = $proimage['name'];
-         $result = pg_connect($conn, "UPDATE Product 
-         SET  Shop_name='{$shop}',Product_Name='{$proname}',Price={$price},Pro_qty={$quantity},Cat_ID='{$procate}',Pro_image='{$filePic}',DetailDesc='{$description}'
-         WHERE Product_ID='$id'");
+         $result = pg_connect($conn, "UPDATE product 
+         SET  shop_name='{$shop}',proname='{$proname}',price={$price},quantity={$quantity},cat_id='{$procate}', `image` ='{$filePic}',descript='{$description}'
+         WHERE product_id='$id'");
          if ($result) {
              echo "Quá trình cập nhật thành công.";
              echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
@@ -141,14 +140,14 @@
                                             <label for="first-name-vertical">Product ID</label>
                                             <input type="text" id="pid" class="form-control"
                                                 name="product_id" placeholder="Product ID"
-                                                value ="<?php echo $row['Product_ID'] ?>" disabled>
+                                                value ="<?php echo $row['product_id'] ?>" disabled>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="first-name-vertical">Shop Name</label>
                                             <input type="text" id="shopnameid" class="form-control"
-                                                name="Shop_name" placeholder="Shop Name"
+                                                name="shop_name" placeholder="Shop Name"
                                                 value ="">
                                         </div>
                                     </div>
@@ -156,7 +155,7 @@
                                         <div class="form-group">
                                             <label for="first-name-vertical">Product Name</label>
                                             <input type="text" id="pname" class="form-control"
-                                                name="Product_Name" placeholder="Product Name"
+                                                name="proname" placeholder="Product Name"
                                                 value ="<?php echo $row['Product_Name'] ?>">
                                         </div>
                                     </div>
@@ -164,7 +163,7 @@
                                         <div class="form-group">
                                             <label for="contact-info-vertical">Price</label>
                                             <input type="number" id="Price" class="form-control"
-                                                name="Price" placeholder="Price" value ="<?php echo $row['Price'] ?>">
+                                                name="price" placeholder="Price" value ="<?php echo $row['Price'] ?>">
                                         </div>
                                     </div>
                 
@@ -173,7 +172,7 @@
                                         <div class="form-group">
                                             <label for="first-name-vertical">Product Description</label>
                                             <input type="text" id="DetailDesc" class="form-control"
-                                                name="DetailDesc" placeholder="Product Description"
+                                                name="descript" placeholder="Product Description"
                                                 value ="<?php echo $row['DetailDesc'] ?>">
                                         </div>
                                     </div>
@@ -183,20 +182,20 @@
                                         <div class="form-group">
                                             <label for="contact-info-vertical">Quantity</label>
                                             <input type="number" id="Pro_qty" class="form-control"
-                                                name="Pro_qty" placeholder="Quantity" value ="<?php echo $row['Pro_qty'] ?>">
+                                                name="quantity" placeholder="Quantity" value ="<?php echo $row['Pro_qty'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="image-vertical">Image</label>
-                                                <input type="file" name="Image" id="imgUp" class="form-control" >
+                                                <input type="file" name="image" id="imgUp" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="password-vertical">Cat id</label>
                                             <input type="text" id="cat_id" class="form-control"
-                                                name="Cat_ID" placeholder="Cat id" value ="<?php echo $row['Cat_ID'] ?>">
+                                                name="cat_id" placeholder="Cat id" value ="<?php echo $row['Cat_ID'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
