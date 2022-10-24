@@ -103,7 +103,7 @@
         } else {
             ?>
             <tr>
-                <td colspan="4">No Records.</td>
+                <td colspan="4"> Please input the product name again because it wasn't found!</td>
             </tr>
             <?php
         }
