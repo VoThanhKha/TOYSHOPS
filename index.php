@@ -17,21 +17,21 @@ include_once("header.php");
   <div class="row">
     <?php
     include_once("connect.php");
-    $sql = "select * from Product";
+    $sql = "select * from product";
     $re = pg_connect($conn, $sql);
     while($row = pg_fetch_row($re)) {
     ?>
       <div class="col-md-4">
             <div class="card">
                 <img
-                src="img/<?=$row['Pro_image']?>"
+                src="img/<?=$row['image']?>"
                 class="card-img-top"
                 alt="Product1>" style="margin: auto;
     width: max-content;"
                 />
                 <div class="card-body">
-                <a href="#" class="text-decoration-none"><h5 class="card-title"><?=$row['Product_Name']?></h5></a>
-                <h6 class="card-subtitle mb-2 text-muted"><span>&#8363;</span><?=$row['Price']?></h6>
+                <a href="#" class="text-decoration-none"><h5 class="card-title"><?=$row['proname']?></h5></a>
+                <h6 class="card-subtitle mb-2 text-muted"><span>&#8363;</span><?=$row['price']?></h6>
                 <a href="#" class="btn btn-primary">Add to Cart</a>
                 </div>
             </div>
