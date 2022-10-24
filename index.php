@@ -17,6 +17,9 @@ include_once("header.php");
         }
 </style>
   <h2>OUR PRODUCTS</h2>
+  <a href="https://bit.ly/3pyAWmg">
+   <img src="images/toanha.jpg" alt="">
+</a>
   </head>
 <body>
 <table>
@@ -27,7 +30,7 @@ include_once("header.php");
         <th>Price &emsp;	&emsp;	&emsp;</th>
         <th>Descript &emsp;	&emsp;	&emsp;</th>
         <th>Quantity &emsp;	&emsp;	&emsp;</th> -->
-        <th>&emsp;	&emsp;	&emsp;Image &emsp;	&emsp;	&emsp;</th>
+        <!-- <th>&emsp;	&emsp;	&emsp;Image &emsp;	&emsp;	&emsp;</th> -->
         </tr>
     </thead>
     <tbody>
