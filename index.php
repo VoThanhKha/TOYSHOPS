@@ -12,14 +12,13 @@ include_once("header.php");
         p {
             color: rgb(0,0,255)
         }
-        img{
+        h3{
           text-align: center;
+          width: 1000px;
+          height: 1000px;
         }
 </style>
   <h2>OUR PRODUCTS</h2>
-  <a href="https://bit.ly/3pyAWmg">
-   <img src="images/toanha.jpg" alt="">
-</a>
   </head>
 <body>
 <table>
