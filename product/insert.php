@@ -47,6 +47,7 @@
         // VALUES ('{$proid}','{$proname}', '{$price}', '{$quantity}', '{$filePic}', '{$shop}','{$description}', '{$procate}')");
         $sql = "INSERT INTO `product` (`product_id`, `shop_name`, `proname`, `price`, `descipt`, `quantity`, `image` ,`cat_id`) 
         VALUES ('{$proid}','{$proname}', '{$price}', '{$quantity}', '{$filePic}','{$shop}','{$description}', '{$procate}')";
+        pg_connect($conn,$sql);
 
 
         if ($result) {
