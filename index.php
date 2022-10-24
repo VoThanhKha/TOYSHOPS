@@ -12,7 +12,7 @@ include_once("header.php");
         p {
             color: rgb(0,0,255)
         }
-        td{
+        h3{
           text-align: center;
         }
 </style>
@@ -52,7 +52,7 @@ include_once("header.php");
                 ?>
                 <tr>
 
-                 <td><img src="../img/<?php echo $row['image'];?>"> </td>
+                 <h3><img src="../img/<?php echo $row['image'];?>"> </h3>
                 </tr>
                 <?php
             }
