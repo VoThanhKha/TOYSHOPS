@@ -1,33 +1,108 @@
-<?php  
-	$conn = pg_pconnect("postgres://evjwdctyczrqow:65c77aa39bff6486959ad4e9532e62b27234a6693e6611c442a980e99d133448@ec2-34-235-198-25.compute-1.amazonaws.com:5432/dfcio4ifhhi5ik");
- 
-?>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-<?php  
-$con = pg_pconnect("postgres://evjwdctyczrqow:65c77aa39bff6486959ad4e9532e62b27234a6693e6611c442a980e99d133448@ec2-34-235-198-25.compute-1.amazonaws.com:5432/dfcio4ifhhi5ik");
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+
+    <link rel="stylesheet" href="../assets/vendors/iconly/bold.css">
+
+    <link rel="stylesheet" href="../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <!-- <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+<!-- Sidebar -->
+    <div id="sidebar" class="active">
+    <?php 
+    if (isset($_POST['Insert'])) {
+
+        include_once('../connect.php');
+
+    
+        $proid   = $_POST['product_id'];
+        $shop = $_POST['shop_name'];
+        $proname = $_POST['proname'];
+        $price      = $_POST['price'];
+        $description      = $_POST['descript'];
+        $quantity      = $_POST['quantity'];
+        $proimage      = $_FILES['image'];
+        $procate      = $_POST['cat_id'];
+
+        copy($proimage['tmp_name'], "../img/" . $proimage['name']);
+        $filePic = $proimage['name'];
+        
+        // $result = pg_query_params($conn, "INSERT INTO `product` (`product_id`, `proname`, `price`, `quantity` ,`image`,`shop_name`, `descript`, `cat_id`)) 
+        // VALUES ('{$proid}','{$proname}', '{$price}', '{$quantity}', '{$filePic}', '{$shop}','{$description}', '{$procate}')");
+        $sql = "INSERT INTO `product` (`product_id`, `proname`, `price`, `quantity`, `image`, `shop_name`, `descipt` ,`cat_id`) VALUES 
+    ('$proid','$proname','$price','$quantity','$filePic', '$shop','$description','$procate')";
 
 
-$proid   = $_POST['product_id'];
-$shop = $_POST['shop_name'];
-$proname = $_POST['proname'];
-$price      = $_POST['price'];
-$description      = $_POST['descript'];
-$quantity      = $_POST['quantity'];
-$proimage      = $_FILES['image'];
-$procate      = $_POST['cat_id'];
+        if ($result) {
+            echo "Product insert Succfully";
+            echo '<meta http-equiv="refresh" content="2;URL=/asm_id/ASM_ID/product/index.php"/>';
+        } else
+            echo "Errol! Let's try. <a href='?page=add_product'>Again</a>";
+    }
+    
 
-copy($proimage['tmp_name'], "../img/" . $proimage['name']);
-$filePic = $proimage['name'];
+        ?>
+        <div class="sidebar-wrapper active">
+            <div class="sidebar-header">
+                <div class="d-flex justify-content-between">
+                    <div class="logo">
+                    <a href="../index.php">Logo Here</a>
+                    </div>
+                    <div class="toggler">
+                        <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <ul class="menu">
+                    <li class="sidebar-title">Menu</li>
 
-if(@$_POST['submit'])  
-{  
-echo $sql="insert into product values('$proid','$shop','$proname','$price','$description','$quantity','$proimage','$procate')";  
-echo "Your Data Inserted";  
-pg_query($sql);  
-}  
-?>   
-<html>  
-</div>
+                    <li class="sidebar-item active ">
+                        <a href="../product/" class='sidebar-link'>
+                            
+                            <span>Product</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item  ">
+                        <a href="../order/" class='sidebar-link'>
+                            
+                            <span>Order</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item  ">
+                        <a href="../account/" class='sidebar-link'>
+                            
+                            <span>Account</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+        </div>
+    </div>
+<!-- div content -->
+    <div id="main">     
+        <div className="page-heading pb-2 mt-4 mb-2 ">
+            <h3>Manager</h3> <a href="index.php"><button type="button" class="btn btn-outline-primary">Back to index</button></a>
+        </div>
         <div class="page-content mt-4">
             <div class="card">
                 <div class="card-content">
@@ -95,6 +170,24 @@ pg_query($sql);
                                                 name="cat_id" placeholder="Cat id" value ="">
                                         </div>
                                     </div>
+                                  
+                                    <div class="col-12 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-warning me-1 mb-1 rounded-pill" name="Insert">Submit</button>
+                                        <button type="reset"
+                                            class="btn btn-light-secondary me-1 mb-1 rounded-pill">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div> <!--card body-->
+                
+                </div> <!--card content-->
+            </div> <!--card-->
+        </div><!--page content-->
+    </div> <!--main-->
+</body>
+<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/app.js"></script>
 
-</body>  
-</html> 
+</html>
