@@ -12,7 +12,7 @@ include_once("header.php");
         p {
             color: rgb(0,0,255)
         }
-        th{
+        td{
           text-align: center;
         }
 </style>
