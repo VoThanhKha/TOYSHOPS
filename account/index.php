@@ -93,8 +93,8 @@
                     <td><?php echo $row['price'];?></td>
                     <td><?php echo $row['descript'];?></td>
                     <td><?php echo $row['quantity'];?></td>
-                    <td><img src="../img/<?php echo $row['image'];?>"> </td>
-                
+                   
+                 <td><img src="../img/<?php echo $row['image'];?>"> </td>
                 </tr>
                 <?php
             }
