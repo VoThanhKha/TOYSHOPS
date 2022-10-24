@@ -108,7 +108,7 @@
                             ?>
                             <tr>
                                 <td><?=$row['OrderID']?></td>
-                                <td><?=$row['Shop_name']?></td>
+                                <td><?=$row['shop_name']?></td>
                                 
                                 <td><?=$row['Address']?></td>
                                
