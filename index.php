@@ -30,8 +30,8 @@ include_once("header.php");
     width: max-content;"
                 />
                 <div class="card-body">
-                <a href="#" class="text-decoration-none"><h5 class="card-title"><?=$row['proname']?></h5></a>
-                <h6 class="card-subtitle mb-2 text-muted"><span>&#8363;</span><?=$row['price']?></h6>
+                <a href="#" class="text-decoration-none"><h5 class="card-title"><?php echo $row['proname'];?></h5></a>
+                <h6 class="card-subtitle mb-2 text-muted"><span>&#8363;</span><?php echo $row['price'];?></h6>
                 <a href="#" class="btn btn-primary">Add to Cart</a>
                 </div>
             </div>
