@@ -45,9 +45,8 @@
         
         // $result = pg_query_params($conn, "INSERT INTO `product` (`product_id`, `proname`, `price`, `quantity` ,`image`,`shop_name`, `descript`, `cat_id`)) 
         // VALUES ('{$proid}','{$proname}', '{$price}', '{$quantity}', '{$filePic}', '{$shop}','{$description}', '{$procate}')");
-        $sql = "INSERT INTO `product` (`product_id`, `shop_name`, `proname`, `price`, `descipt`, `quantity`, `image` ,`cat_id`) 
-        VALUES ('{$proid}','{$proname}', '{$price}', '{$quantity}', '{$filePic}','{$shop}','{$description}', '{$procate}')";
-        pg_connect($conn,$sql);
+        $sql = "INSERT INTO `product` (`product_id`, `proname`, `price`, `quantity`, `image`, `shop_name`, `descipt` ,`cat_id`) VALUES 
+    ('$proid','$proname','$price','$quantity','$filePic', '$shop','$description','$procate')";
 
 
         if ($result) {
