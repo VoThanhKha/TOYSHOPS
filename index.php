@@ -24,7 +24,7 @@ include_once("header.php");
       <div class="col-md-4">
             <div class="card">
                 <img
-                src="img/<?=$row['image']?>"
+                src="../img/<?php echo $row['image'];?>"
                 class="card-img-top"
                 alt="Product1>" style="margin: auto;
     width: max-content;"
