@@ -90,6 +90,7 @@
                             <th scope="col">Price</th>
                             <th scope="col">Descript</th>
                             <th scope="col">Qty</th>
+                            <th scope="col">Image</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                             </tr>
@@ -106,6 +107,7 @@
                                 <td><?=$row['price']?></td>
                                 <td><?=$row['descript']?></td>
                                 <td><?=$row['quantity']?></td>
+                                <td><img src="../img/<?php echo $row['image'];?>"> </td>
 
                               
                                 <td>
