@@ -1,8 +1,8 @@
 <?php
 include_once("../connect.php");
 
-if(isset($_GET['id'])){
-    $delQuery = "Delete from product where product_id ='".$_GET['id']."'";
+if(isset($_GET['product_id'])){
+    $delQuery = "Delete from product where product_id='".$_GET['product_id']."'";
 
 if(pg_connect($conn, $delQuery)){
     echo " <script>
