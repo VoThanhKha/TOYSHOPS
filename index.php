@@ -12,37 +12,13 @@ include_once("header.php");
         p {
             color: rgb(0,0,255)
         }
+        th{
+          text-align: center;
+        }
 </style>
   <h2>OUR PRODUCTS</h2>
   </head>
 <body>
-<style>
-
-    h4{
-        color:darkblue;
-            
-    }
-        body {
-            color:black;
-            text-align:center;
-}
-        h3 {
-            color:darkblue;
-            
-        }
-        p {
-            color: rgb(0,0,255)
-        }
-</style>
-<h3>Please Enter Product's Name !</h3>
-<form action="" method="post">
-    <div>
-     <input name="proname"/>
-        <input type="submit" value="Search"/>
-
-    </div>
-</form>
-<h2>Result:</h2>
 <table>
     <thead>
     <tr>
@@ -51,7 +27,7 @@ include_once("header.php");
         <th>Price &emsp;	&emsp;	&emsp;</th>
         <th>Descript &emsp;	&emsp;	&emsp;</th>
         <th>Quantity &emsp;	&emsp;	&emsp;</th> -->
-        <th>Image &emsp;	&emsp;	&emsp;</th>
+        <th>&emsp;	&emsp;	&emsp;Image &emsp;	&emsp;	&emsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -74,11 +50,8 @@ include_once("header.php");
         if (pg_num_rows($result) > 0) {
             while ($row = pg_fetch_array($result)) {
                 ?>
-            
                 <tr>
 
-          
-                   
                  <td><img src="../img/<?php echo $row['image'];?>"> </td>
                 </tr>
                 <?php
