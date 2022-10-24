@@ -19,7 +19,7 @@ include_once("header.php");
       <title>Thẻ IMG</title>
    </head>
    <body> 
-      <img src="../img/<?php echo $row['flower.jpg'];?>"height="150px" width="150px" alt="" /> 
+      <img src="../img/<?php echo $row['46lLv3UMOY30Oj5zVOrF_simg_b5529c_250x250_maxb.jpg'];?>"height="150px" width="150px" alt="" /> 
    </body>
 </html>
   <div class="row">
