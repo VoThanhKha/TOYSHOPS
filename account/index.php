@@ -49,7 +49,7 @@
 <h3>Please Enter Product's Name !</h3>
 <form action="" method="post">
     <div>
-     <input name="Product_Name"/>
+     <input name="proname"/>
         <input type="submit" value="Search"/>
 
     </div>
@@ -69,7 +69,7 @@
     <tbody>
     <?php
     /*Kết nối máy chủ MySQL. Máy chủ có cài đặt mặc định (user là 'root' và không có mật khẩu)*/
-    $link = mysqli_connect("localhost", "root", "", "shop_200092");
+    $link = pg_connect("localhost", "root", "", "shop_200092");
  
     // Kểm tra kết nối
     if ($link === false) {
@@ -77,29 +77,29 @@
     }
  
     $proname = '%';
-    if (isset($_POST['Product_Name'])) {
-        $proname = '%' . $_POST['Product_Name'] . '%';
+    if (isset($_POST['proname'])) {
+        $proname = '%' . $_POST['proname'] . '%';
     }
     // Thực hiện câu lệnh SELECT
-    $sql = "SELECT * FROM product WHERE Product_Name LIKE '$proname'";
-    if ($result = mysqli_query($link, $sql)) {
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_array($result)) {
+    $sql = "SELECT * FROM product WHERE proname LIKE '$proname'";
+    if ($result = pg_query($link, $sql)) {
+        if (pg_num_rows($result) > 0) {
+            while ($row = pg_fetch_array($result)) {
                 ?>
             
                 <tr>
-                <td><?php echo $row['Shop_name'];?></td>
-                    <td><?php echo $row['Product_Name'];?></td>
-                    <td><?php echo $row['Price'];?></td>
-                    <td><?php echo $row['DetailDesc'];?></td>
-                    <td><?php echo $row['Pro_qty'];?></td>
-                    <td><img src="../img/<?php echo $row['Pro_image'];?>"> </td>
+                <td><?php echo $row['shop_name'];?></td>
+                    <td><?php echo $row['proname'];?></td>
+                    <td><?php echo $row['price'];?></td>
+                    <td><?php echo $row['descript'];?></td>
+                    <td><?php echo $row['quantity'];?></td>
+                    <td><img src="../img/<?php echo $row['image'];?>"> </td>
                 
                 </tr>
                 <?php
             }
             // Giải phóng bộ nhớ của biến
-            mysqli_free_result($result);
+            pg_free_result($result);
         } else {
             ?>
             <tr>
@@ -108,10 +108,10 @@
             <?php
         }
     } else {
-        echo "ERROR: Không thể thực thi câu lệnh $sql. " . mysqli_error($link);
+        echo "ERROR: Không thể thực thi câu lệnh $sql. " . pg_errormessage($link);
     }
     // Đóng kết nối
-    mysqli_close($link);
+    pg_close($link);
     ?>
     </tbody>
 </table>
