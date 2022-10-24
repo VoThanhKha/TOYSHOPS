@@ -111,7 +111,7 @@
                                             <label for="first-name-vertical">Product ID</label>
                                             <input type="text" id="product_id" class="form-control"
                                                 name="product_id" placeholder="Product ID"
-                                                value ="proid">
+                                                value ="">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -119,7 +119,7 @@
                                             <label for="first-name-vertical">Store name</label>
                                             <input type="text" id="shop_name" class="form-control"
                                                 name="shop_name" placeholder="Shop Name"
-                                                value ="shop_name">
+                                                value ="">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -127,14 +127,14 @@
                                             <label for="first-name-vertical">Product Name</label>
                                             <input type="text" id="proname" class="form-control"
                                                 name="proname" placeholder="Product Name"
-                                                value ="proname">
+                                                value ="">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="contact-info-vertical">Price</label>
                                             <input type="number" id="price" class="form-control"
-                                                name="price" placeholder="Price" value ="price">
+                                                name="price" placeholder="Price" value ="">
                                         </div>
                                     </div>
                                    
@@ -143,27 +143,27 @@
                                             <label for="first-name-vertical">Product Description</label>
                                             <input type="text" id="descript" class="form-control"
                                                 name="descript" placeholder="Product Description"
-                                                value ="descript">
+                                                value ="">
                                         </div>
                                     </div> 
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="contact-info-vertical">Quantity</label>
                                             <input type="number" id="quantity" class="form-control"
-                                                name="quantity" placeholder="Quantity" value ="quantity">
+                                                name="quantity" placeholder="Quantity" value ="">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="image-vertical">Image</label>
-                                            <input type="file" name="image" id="image" class="form-control" value="image" >
+                                            <input type="file" name="image" id="image" class="form-control" value="" >
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="password-vertical">Cat id</label>
                                             <input type="text" id="cat_id" class="form-control"
-                                                name="cat_id" placeholder="Cat id" value ="cat_id">
+                                                name="cat_id" placeholder="Cat id" value ="">
                                         </div>
                                     </div>
                                   
