@@ -27,7 +27,9 @@
     <?php 
     if (isset($_POST['Insert'])) {
 
-        include_once('../connect.php');
+        // include_once('../connect.php');
+        $conn = pg_pconnect("postgres://evjwdctyczrqow:65c77aa39bff6486959ad4e9532e62b27234a6693e6611c442a980e99d133448@ec2-34-235-198-25.compute-1.amazonaws.com:5432/dfcio4ifhhi5ik");
+
     
         $proid   = $_POST['product_id'];
         $shop = $_POST['shop_name'];
@@ -40,8 +42,11 @@
 
         copy($proimage['tmp_name'], "../img/" . $proimage['name']);
         $filePic = $proimage['name'];
-        $result = pg_query_params($conn, "INSERT INTO `product` (`product_id`, `proname`, `price`, `quantity` ,`image`,`shop_name`, `descript`, `cat_id`)) 
-        VALUES ('{$proid}','{$proname}', '{$price}', '{$quantity}', '{$filePic}', '{$shop}','{$description}', '{$procate}')");
+        
+        // $result = pg_query_params($conn, "INSERT INTO `product` (`product_id`, `proname`, `price`, `quantity` ,`image`,`shop_name`, `descript`, `cat_id`)) 
+        // VALUES ('{$proid}','{$proname}', '{$price}', '{$quantity}', '{$filePic}', '{$shop}','{$description}', '{$procate}')");
+        $sql = "INSERT INTO product (product_id, shop_name, proname, price, descipt, quantity, `image` ,cat_id) VALUES 
+    ('$proid', '$shop','$proname','$price','$description','$quantity','$filePic','$procate')";
 
 
         if ($result) {
