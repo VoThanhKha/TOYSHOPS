@@ -43,8 +43,9 @@
         
         // $result = pg_query($conn, "INSERT INTO `public.product` (`product_id`, `proname`, `price`, `quantity` ,`image`,`shop_name`, `descript`, `cat_id`) 
         // VALUES ('{$proid}','{$proname}', '{$price}', '{$quantity}', '{$filePic}', '{$shop}','{$description}', '{$procate}')");
-        $sql = "INSERT INTO `product` (`product_id`, `proname`, `price`, `quantity`, `image`, `shop_name`, `descript` ,`cat_id`) VALUES 
-    ('$proid','$proname','$price','$quantity','$proimage', '$shop','$description','$procate')";
+        $sql = "INSERT INTO public.product(
+            product_id, proname, price, quantity, image, shop_name, descript, cat_id)
+            VALUES ('$proid','$proname','$price','$quantity','$proimage', '$shop','$description','$procate')";
 
         if (pg_query($conn, $sql)) {
             // echo "Product insert Succfully";
