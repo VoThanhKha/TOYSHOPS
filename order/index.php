@@ -28,7 +28,7 @@
         <div>
             <?php
             include_once("../connect.php");
-            $sql1 = "SELECT orderid, orderdate, address, username FROM public.orders";
+            $sql1 = "SELECT orderid, orderdate, address FROM public.orders";
             $re1 = pg_connect($conn,$sql1);
             ?>
             
@@ -55,7 +55,7 @@
                     </li>
 
                     <li class="sidebar-item active ">
-                        <a href="../orders/" class='sidebar-link'>
+                        <a href="../order/" class='sidebar-link'>
                             
                             <span>Store branches</span>
                         </a>
@@ -109,7 +109,6 @@
                             <tr>
                                 <td><?=$row['orderid']?></td>
                                 <td><?=$row['shop_name']?></td>
-                                
                                 <td><?=$row['address']?></td>
                                
                             
