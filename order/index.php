@@ -28,7 +28,7 @@
         <div>
             <?php
             include_once("../connect.php");
-            $sql1 = "select * from orders";
+            $sql1 = "SELECT orderid, orderdate, address, username FROM public.orders";
             $re1 = pg_connect($conn,$sql1);
             ?>
             
