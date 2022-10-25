@@ -48,7 +48,7 @@
 
         if (isset($result)) {
             echo "Product insert Succfully";
-            echo  header("Location: product/index.php");
+            echo 'header("http-equiv="refresh" content="2;URL=/asm_id/ASM_ID/product/index.php)';
         } else
             echo "Errol! Let's try. <a href='?page=add_product'>Again</a>";
     }
