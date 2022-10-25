@@ -107,17 +107,17 @@
                             while( $row = pg_fetch_row($re1) ){
                             ?>
                             <tr>
-                                <td><?=$row['OrderID']?></td>
+                                <td><?=$row['orderid']?></td>
                                 <td><?=$row['shop_name']?></td>
                                 
-                                <td><?=$row['Address']?></td>
+                                <td><?=$row['address']?></td>
                                
                             
                                 <td>
-                                    <a href="update.php?id=<?=$row['OrderID']?>" class="btn btn-warning rounded-pill"> Update </a>
+                                    <a href="update.php?id=<?=$row['orderid']?>" class="btn btn-warning rounded-pill"> Update </a>
                                 </td>
                                 <td>
-                                <a href="delete.php?id=<?=$row['OrderID']?>" class="btn btn-warning rounded-pill"> Delete </a>
+                                <a href="delete.php?id=<?=$row['orderid']?>" class="btn btn-warning rounded-pill"> Delete </a>
                                 </td>
                                
                             </tr>
