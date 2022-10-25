@@ -55,7 +55,7 @@
                     </li>
 
                     <li class="sidebar-item active ">
-                        <a href="../order/" class='sidebar-link'>
+                        <a href="../orders/" class='sidebar-link'>
                             
                             <span>Store branches</span>
                         </a>
