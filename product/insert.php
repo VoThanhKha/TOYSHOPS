@@ -50,7 +50,7 @@
         if (pg_query($conn, $sql)) {
             // echo "Product insert Succfully";
             echo "<script>
-                       window.location = 'product/index.php?status=insert';
+                       window.location = '/product/index.php?status=insert';
             </script>";
             
         } else
