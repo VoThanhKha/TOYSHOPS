@@ -104,7 +104,7 @@
                         </thead>
                         <tbody>
                             <?php
-                            while( $row = pg_query($re1) ){
+                            while( $row = pg_fetch_row($re1) ){
                             ?>
                             <tr>
                                 <td><?=$row['orderid']?></td>
