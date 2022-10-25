@@ -49,7 +49,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="./account/index.php">Search Product</a></li>
-                <li><a class="dropdown-item" href="./order/index.php">Store Branches</a></li>
+                <li><a class="dropdown-item" href="./orders/index.php">Store Branches</a></li>
                 <li><a class="dropdown-item" href="./product/index.php">Product Management</a></li>
             </ul>
             </li>
