@@ -41,14 +41,17 @@
         copy($proimage['tmp_name'], "../img/" . $proimage['name']);
         $filePic = $proimage['name'];
         
-        $result = pg_query($conn, "INSERT INTO `public.product` (`product_id`, `proname`, `price`, `quantity` ,`image`,`shop_name`, `descript`, `cat_id`) 
-        VALUES ('{$proid}','{$proname}', '{$price}', '{$quantity}', '{$filePic}', '{$shop}','{$description}', '{$procate}')");
-    //     $sql = "INSERT INTO `product` (`product_id`, `proname`, `price`, `quantity`, `image`, `shop_name`, `descript` ,`cat_id`) VALUES 
-    // ('$proid','$proname','$price','$quantity','$proimage', '$shop','$description','$procate')";
+        // $result = pg_query($conn, "INSERT INTO `public.product` (`product_id`, `proname`, `price`, `quantity` ,`image`,`shop_name`, `descript`, `cat_id`) 
+        // VALUES ('{$proid}','{$proname}', '{$price}', '{$quantity}', '{$filePic}', '{$shop}','{$description}', '{$procate}')");
+        $sql = "INSERT INTO `product` (`product_id`, `proname`, `price`, `quantity`, `image`, `shop_name`, `descript` ,`cat_id`) VALUES 
+    ('$proid','$proname','$price','$quantity','$proimage', '$shop','$description','$procate')";
 
-        if (isset($result)) {
-            echo "Product insert Succfully";
-            header("Location: product/index.php");
+        if (pg_query($conn, $sql)) {
+            // echo "Product insert Succfully";
+            echo "<script>
+                       window.location = 'product/index.php?status=insert';
+            </script>";
+            
         } else
             echo "Errol! Let's try. <a href='?page=add_product'>Again</a>";
     }
