@@ -46,7 +46,7 @@
     //     $sql = "INSERT INTO `product` (`product_id`, `proname`, `price`, `quantity`, `image`, `shop_name`, `descript` ,`cat_id`) VALUES 
     // ('$proid','$proname','$price','$quantity','$proimage', '$shop','$description','$procate')";
 
-        if ($result) {
+        if (isset($result)) {
             echo "Product insert Succfully";
             echo '<meta http-equiv="refresh" content="2;URL=/asm_id/ASM_ID/product/index.php"/>';
         } else
