@@ -29,7 +29,6 @@
 
         include_once('../connect.php');
 
-    
         $proid   = $_POST['product_id'];
         $shop = $_POST['shop_name'];
         $proname = $_POST['proname'];
@@ -42,11 +41,10 @@
         copy($proimage['tmp_name'], "../img/" . $proimage['name']);
         $filePic = $proimage['name'];
         
-        // $result = pg_query_params($conn, "INSERT INTO `product` (`product_id`, `proname`, `price`, `quantity` ,`image`,`shop_name`, `descript`, `cat_id`)) 
-        // VALUES ('{$proid}','{$proname}', '{$price}', '{$quantity}', '{$filePic}', '{$shop}','{$description}', '{$procate}')");
-        $sql = "INSERT INTO `product` (`product_id`, `proname`, `price`, `quantity`, `image`, `shop_name`, `descipt` ,`cat_id`) VALUES 
-    ('$proid','$proname','$price','$quantity','$filePic', '$shop','$description','$procate')";
-
+        $result = pg_query_params($conn, "INSERT INTO `public.product` (`product_id`, `proname`, `price`, `quantity` ,`image`,`shop_name`, `descript`, `cat_id`) 
+        VALUES ('{$proid}','{$proname}', '{$price}', '{$quantity}', '{$filePic}', '{$shop}','{$description}', '{$procate}')");
+    //     $sql = "INSERT INTO `product` (`product_id`, `proname`, `price`, `quantity`, `image`, `shop_name`, `descript` ,`cat_id`) VALUES 
+    // ('$proid','$proname','$price','$quantity','$proimage', '$shop','$description','$procate')";
 
         if ($result) {
             echo "Product insert Succfully";
@@ -54,8 +52,6 @@
         } else
             echo "Errol! Let's try. <a href='?page=add_product'>Again</a>";
     }
-    
-
         ?>
         <div class="sidebar-wrapper active">
             <div class="sidebar-header">
@@ -73,8 +69,7 @@
                     <li class="sidebar-title">Menu</li>
 
                     <li class="sidebar-item active ">
-                        <a href="../product/" class='sidebar-link'>
-                            
+                        <a href="../product/" class='sidebar-link'>       
                             <span>Product</span>
                         </a>
                     </li>
