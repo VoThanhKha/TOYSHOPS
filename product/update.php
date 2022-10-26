@@ -30,14 +30,14 @@
  $id = $_GET['id'];
  $sqlstring = "SELECT * FROM product WHERE product_id = '$id' ";
  
- $result = pg_connect($conn, $sqlstring);
- $row = pg_fetch_row($result, MYSQLI_ASSOC);
+ $sql = pg_connect($conn, $sqlstring);
+ $row = pg_fetch_row($sql, MYSQLI_ASSOC);
  $procate = $row['cat_id'];
 
  $sql_store = "SELECT * FROM product";
  $query_store = pg_connect($conn, $sql_store);
  
- $result = pg_connect($conn, "SELECT* FROM product WHERE product_id='{$id}'");
+ $sql = pg_connect($conn, "SELECT* FROM product WHERE product_id='{$id}'");
  $row = pg_fetch_row($result);
  
  $oldpic = $row['image'];
@@ -56,15 +56,16 @@
     $procate      = $_POST['cat_id'];
  
      if ($proimage['name'] == '') {
-         $result = pg_connect($conn, "UPDATE product
-         SET shop_name='{$shop}',proname='{$proname}',price={$price},quantity ={$quantity},cat_id='{$procate}',
-         descript='{$description}'
-         WHERE product_id ='$id'");
-         if ($result) {
-             echo "Quá trình cập nhật thành công.";
-             echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
+         $sql = "UPDATE public.product
+         SET proname='$proname', price='$price', quantity='$quantity', image='$proimage', shop_name='$shop', descript='$description', cat_id='$proid'
+         WHERE product_id ='$proid'";
+         if (pg_query($conn, $sql)) {
+            echo "<script>
+            window.location = '/product/index.php?status=insert';
+ </script>";
          } else
-             echo "Có lỗi xảy ra trong quá trình cập nhật. <a href='?page=product'>Again</a>";
+         echo "Errol! Let's try. <a href='?page=add_product'>Again</a>";
+
      } else {
          copy($proimage['tmp_name'], "./images/" . $proimage['name']);
          unlink("images/$oldpic");
