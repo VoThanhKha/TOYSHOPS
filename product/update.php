@@ -58,7 +58,7 @@
      if ($proimage['name'] == '') {
          $sql = "UPDATE public.product
          SET proname='$proname', price='$price', quantity='$quantity', image='$proimage', shop_name='$shop', descript='$description', cat_id='$proid'
-         WHERE product_id ='$proid'";
+         WHERE product_id ='$id'";
          if (pg_query($conn, $sql)) {
             echo "<script>
             window.location = '/product/index.php?status=insert';
