@@ -3,7 +3,7 @@ include_once("../connect.php");
 
 if(isset($_GET['product_id'])){
     $sql = "DELETE FROM public.product
-	WHERE product_id='".$_GET['product_id']."'";
+	WHERE product_id='$proid'";
 
 if(pg_connect($conn, $sql)){
     echo " <script>
@@ -14,3 +14,5 @@ if(pg_connect($conn, $sql)){
 }
 
 ?>
+
+
